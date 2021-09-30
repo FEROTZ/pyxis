@@ -65,6 +65,8 @@
         }
 
     </style>
+
+    @livewireStyles
 </head>
 <body>
 
@@ -216,6 +218,6 @@
 
 @yield('scripts')
 
-
+@livewireScripts
 </body>
 </html>

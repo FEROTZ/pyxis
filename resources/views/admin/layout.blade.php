@@ -51,16 +51,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                     <i class="fas fa-th-large"></i>
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a href="{{ url('/logout') }}" class="btn btn-danger">Cerrar Sesión</a>
             </li>
@@ -96,6 +96,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="{{route("productos.show")}}" class="nav-link">
                             <i class="fas fa-adjust"></i>
                             <p>Servicios</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route("mensajes.watch")}}" class="nav-link">
+                            <i class="fas fa-envelope"></i>
+                            <p>Mensajes</p>
                         </a>
                     </li>
 
@@ -300,6 +307,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
             theme: 'bootstrap4'
         })
         /* jQueryKnob */
+
+    })
+
+    $(function () {
+
+    $('#messages-table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+    }).buttons().container().appendTo('#productos-table_wrapper .col-md-6:eq(0)');
+
+    $('.select2').select2();
+
+    $('.tags').select2({
+        tags:true,
+        maximumSelectionLength: 4
+    });
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+    /* jQueryKnob */
 
     })
 
