@@ -16,6 +16,9 @@ use App\Http\Controllers\ProductoController;
 */
 
 
+//Modulo de contacto
+Route::view('contacts', 'contacto');
+
 //Ruta para funcionamiento de formulario de contacto
 Route::post('contactanos', [\App\Http\Controllers\SendEmailController::class, 'send'])->name('contactanos.store');
 
@@ -46,6 +49,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/editar-productos/{id}', [App\Http\Controllers\Admin\ProductoController::class, "edit"])->name('productos.edit');
     Route::post('/actualizar-producto/{id}', [App\Http\Controllers\Admin\ProductoController::class, "update"])->name('productos.update');
     Route::post('/eliminar-producto/{id}', [App\Http\Controllers\Admin\ProductoController::class, "destroy"])->name('productos.delete');
+    //Manejo de mensajes que llegan del formulario de contacto
+    Route::get('/mensajes', [App\Http\Controllers\Admin\MessageController::class, "index"])->name('mensajes.watch');
+    Route::get('/ver-mensaje/{id}', [App\Http\Controllers\Admin\MessageController::class, "show"])->name('mensajes.show');
+    Route::post('/eliminar-mensaje/{id}', [App\Http\Controllers\Admin\MessageController::class, "destroy"])->name('mensajes.delete');
 });
 
 Auth::routes();
