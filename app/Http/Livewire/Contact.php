@@ -17,4 +17,9 @@ class Contact extends Component
     {
         return view('livewire.contact');
     }
+
+    public function edit()
+    {
+        return view('admin.informacion.edit');
+    }
 }

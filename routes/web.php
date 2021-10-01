@@ -53,6 +53,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/mensajes', [App\Http\Controllers\Admin\MessageController::class, "index"])->name('mensajes.watch');
     Route::get('/ver-mensaje/{id}', [App\Http\Controllers\Admin\MessageController::class, "show"])->name('mensajes.show');
     Route::post('/eliminar-mensaje/{id}', [App\Http\Controllers\Admin\MessageController::class, "destroy"])->name('mensajes.delete');
+    //Editar la informacion de contacto, telefono, correo, etc
+    Route::get('/informacion', [App\Http\Livewire\Contact::class, "edit"])->name('informacion.edit');
+
 });
 
 Auth::routes();

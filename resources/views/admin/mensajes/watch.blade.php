@@ -3,11 +3,11 @@
 @section('title')
     <div class="row">
         <div class="col-6">
-            <h1 class="m-0">Mensajes</h1>
+            <h1 class="m-0">Mensajes Recibidos</h1>
         </div>
-        <div class="col-6 text-right">
+        {{-- <div class="col-6 text-right">
             <a class="btn btn-primary" href="{{route('productos.create')}}" id="create-producto"> <i class="fas fa-plus"></i> Crear un nuevo servicio</a>
-        </div>
+        </div> --}}
     </div>
 @endsection
 @section('content')
@@ -44,7 +44,11 @@
                                 <td>{{$message->asunto}}</td>
                                 <td>{{$message->created_at}}</td>
                                 <td class="text-center"><a href="{{url("/admin/ver-mensaje/".$message->id)}}" class="btn btn-secondary"><i class="fas fa-search"></i></a></td>
-                                <td class="text-center"><button value="{{$message->id}}" class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></button></td>
+                                <td class="text-center">
+                                    <button value="{{$message->id}}" id="btndelete" class="btn btn-danger delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
 
@@ -59,26 +63,27 @@
 
 @section("scripts")
 <script>
-    $('#messages-table').on('click', '.delete', function() {
-        var id = $(this).val();
-        var desicion = confirm("Seguro que desea eliminar este mensaje");
-        if (desicion) {
+    $('#btndelete').on('click', function() {
+        let id = $(this).val();
+        let decision = confirm("Seguro que desea eliminar este mensaje");
+        if (decision) {
             $.ajax({
                 type: 'POST',
-                url: "/admin/eliminar-mensaje/" + id,
+                url: `/admin/eliminar-mensaje/${id}`,
                 data: {
                     '_token': '{{csrf_token()}}',
                     'id': id,
                 },
                 success: function (data) {
-                    alert("Mensaje eliminado");
-                    location.reload();
-
+                    alert("Producto eliminado");
+                    location.replace("/admin/mensajes");
                 },
                 error: function () {
+                
                 }
             });
         }
     });
+
 </script>
 @endsection
