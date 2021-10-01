@@ -28,9 +28,7 @@
 
           <div class="col-6 text-right">
             @foreach($message as $data)
-
-              <button class="btn btn-danger delete" onclick="delete({{$data->id}})" id="delete"> <i class="fas fa-trash-alt"></i> Eliminar</button>
-              
+                <button class="btn btn-danger delete" value="{{$data->id}}" id="btndelete"> <i class="fas fa-trash-alt"></i> Eliminar</button>
             @endforeach
           </div>
         </div>
@@ -75,31 +73,33 @@
 
 @section("scripts")
 <script>
-  function delete(id){
-    console.log("Entra");
-    var id = $(this).val();
-        var decision = confirm("Seguro que desea eliminar este mensaje");
+    // function delete(id){
+        
+    //     
+    // }
+
+    $('#btndelete').on('click', function() {
+        let id = $(this).val();
+        let decision = confirm("Seguro que desea eliminar este mensaje");
         if (decision) {
             $.ajax({
                 type: 'POST',
-                url: "/admin/eliminar-producto/" + id,
+                url: `/admin/eliminar-mensaje/${id}`,
                 data: {
                     '_token': '{{csrf_token()}}',
                     'id': id,
                 },
                 success: function (data) {
                     alert("Producto eliminado");
-                    location.replace("{{url('/admin/mensajes/')");
+                    location.replace("/admin/mensajes");
                 },
                 error: function () {
-                  
+                
                 }
             });
         }
-  }
-
-    $('#delete').on('click', '.delete', function() {
-        
     });
+
+    // console.log(document.getElementById("btndelete"));
 </script>
 @endsection

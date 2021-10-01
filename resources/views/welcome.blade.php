@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
-
-
     @include('cliente.includes.carrusel')
     <section class="bg-warning col-12" id="about">
         <div class="container">

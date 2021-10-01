@@ -34,7 +34,8 @@
 
             <div class="form">
                 <div id="errormessage"></div>
-                <form action="{{route('contactanos.store')}}" method="POST" role="form" class="contactForm" onsubmit="this.submit(); this.reset() return false;">
+                {{-- onsubmit="this.submit(); this.reset() return false;" para borrar el contenido del form --}}
+                <form action="{{route('contactanos.store')}}" method="POST" role="form" class="contactForm">
                     @csrf
                     <div class="form-row">
                         <div class="form-group col-md-6">
