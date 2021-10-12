@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Database\Seeders\ClasificacionTableSeeder;
+use Illuminate\Http\Request;
+//Modelos
 use App\Models\Clasificacion;
 use App\Models\Menu;
 use App\Models\Producto;
 use App\Models\ProductoImagen;
 use App\Models\Sub_categoria;
-use Database\Seeders\ClasificacionTableSeeder;
-use Illuminate\Http\Request;
+use App\Models\Informacion_contacto as Informacion;
 
 class WelcomeController extends Controller
 {
@@ -19,9 +21,12 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
-        $imagenes = ProductoImagen::where('destacado',true)->get();
-        return view('welcome')->with(compact("imagenes"));
+        $menus       = Menu::all();
+        $imagenes    = ProductoImagen::where('destacado',true)->get();
+        $informacion = Informacion::all();
+        // $informacion = Informacion::where('id', 8);
+
+        return view('welcome')->with(compact("imagenes", "informacion"));
     }
 
     /**
@@ -54,6 +59,7 @@ class WelcomeController extends Controller
     public function show($clasificacion,$productoSlug)
     {
         $productos = Menu::all();
+        $informacion = Informacion::all();
         $servicio = collect();
         $imagenesP = collect();
         foreach ($productos as $elemento){
@@ -69,7 +75,7 @@ class WelcomeController extends Controller
 
         }
 
-        return view("cliente.productos.show")->with(compact("servicio","imagenesP"));
+        return view("cliente.productos.show")->with(compact("servicio","imagenesP", "informacion"));
     }
 
     public function showSubcategoria($clasificacionSlug,$productoSlug,$categoriaSlug,$subcategoriaSlug)

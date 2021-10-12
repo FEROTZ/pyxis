@@ -24,20 +24,20 @@
                     <textarea name="introduccion" id="introduccion" type="text" class="form-control" placeholder="Ingresa una introducción">{{old("introduccion")}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="txtDescripcion">Descripción</label>
-                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{old("descripcion")}}</textarea>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputFile">Primera Imagen</label>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input name="imagen" value="{{old("imagen")}}" type="file" class="custom-file-input" id="inputImagen">
+                            <input name="imagen" value="{{old("imagen")}}" type="file" class="custom-file-input" id="inputImagen" aria-describedby="ImagenHelp">
                             <label class="custom-file-label" for="inputImagen">Choose file</label>
                         </div>
                         <div class="input-group-append">
                             <span class="input-group-text">Upload</span>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripción</label>
+                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{old("descripcion")}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="txtContenido">Contenido</label>
