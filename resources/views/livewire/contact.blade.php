@@ -7,34 +7,62 @@
             </div>
 
             <div class="row contact-info">
+                {{-- @if(!$informacion->isEmpty()) --}}
+                    @forelse($informacion as $data)
+                        <div class="col-md-4">
+                                <div class="contact-phone">
+                                    <i class="ion-ios-telephone-outline"></i>
+                                    <h3>Teléfono</h3>
+                                    <p><a href="tel:+52 (55) 5112 7794"> {{$data->phone}} </a></p>
+                                </div>
+                        </div>
 
-                <div class="col-md-4">
-                    <div class="contact-phone">
-                        <i class="ion-ios-telephone-outline"></i>
-                        <h3>Teléfono</h3>
-                        <p><a href="tel:+52 (55) 5112 7794">+52 (55) 5112 7794</a></p>
-                    </div>
-                </div>
+                        <div class="col-md-4">
+                            <div class="contact-address">
+                                <i class="ion-ios-location-outline"></i>
+                                <h3>Dirección</h3>
+                                <p><a href=""> {{$data->address}} </a></p>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-4">
+                            <div class="contact-email">
+                                <i class="ion-ios-email-outline"></i>
+                                <h3>Correo</h3>
+                                
+                                <p><a href="mailto:{{$data->mail}}"> {{$data->email}} </a></p>
+                            </div>
+                        </div>
+                    @empty   
+                        <div class="col-md-4">
+                            <div class="contact-phone">
+                                <i class="ion-ios-telephone-outline"></i>
+                                <h3>Teléfono</h3>
+                                <p><a>¡Proximamente!</a></p>
+                            </div>
+                        </div>
 
-                <div class="col-md-4">
-                    <div class="contact-address">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="contact-email">
-                        <i class="ion-ios-email-outline"></i>
-                        <h3>Correo</h3>
-                        {{-- Se modifico el href del correo electronico, no mandaba al correo indicado --}}
-                        <p><a href="mailto:informacion@gepyxis.mx">informacion@gepyxis.mx</a></p>
-                    </div>
-                </div>
-
+                        <div class="col-md-4">
+                            <div class="contact-address">
+                                <i class="ion-ios-location-outline"></i>
+                                <h3>Dirección</h3>
+                                <p><a>¡Proximamente!</a></p>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-4">
+                            <div class="contact-email">
+                                <i class="ion-ios-email-outline"></i>
+                                <h3>Correo</h3>
+                                <p><a>¡Proximamente!</a></p>
+                            </div>
+                        </div>
+                    @endforelse
+                {{-- @endif --}}
             </div>
 
             <div class="form">
                 <div id="errormessage"></div>
-                {{-- onsubmit="this.submit(); this.reset() return false;" para borrar el contenido del form --}}
                 <form action="{{route('contactanos.store')}}" method="POST" role="form" class="contactForm">
                     @csrf
                     <div class="form-row">
@@ -69,7 +97,6 @@
                     </script>
                 @endif
             </div>
-
         </div>
     </section>
 </div>

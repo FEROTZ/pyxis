@@ -91,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                     <li class="nav-item">
                         <a href="{{route("productos.show")}}" class="nav-link">
                             <i class="fas fa-adjust"></i>
@@ -106,12 +106,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="{{route("informacion.edit")}}" class="nav-link">
+                    {{-- <li class="nav-item">
+                        <a href="{{route("informacion.create")}}" class="nav-link">
                             <i class="fas fa-edit"></i>
                             <p>Información</p>
                         </a>
+                    </li> --}}
+
+                    <!-- menu1 -->
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Editar Información
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route("informacion.create")}}" class="nav-link active">
+                                    <i class="far fa-id-card nav-icon"></i>
+                                    <p>Contacto</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route("aviso-privacidad.create")}}" class="nav-link">
+                                    <i class="fas fa-user-secret nav-icon"></i>
+                                    <p>Aviso de privacidad</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
                     </li>
+                    
 
                     <!-- menu1
                     <li class="nav-item menu-open">

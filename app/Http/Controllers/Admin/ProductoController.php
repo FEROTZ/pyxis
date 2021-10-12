@@ -30,7 +30,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $validated=$request->validate([
-           'nombre' => 'nullable|unique:menus|max:40',
+            'nombre' => 'nullable|unique:menus|max:40',
             'introduccion' => 'nullable|max:1000',
             'descripcion' => 'nullable|max:1000',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateContactsTable extends Migration
 {
     /**
+     * EN ESTA TABLA SE GUARDAN LOS MENSAJES RECIBIDOS DEL FORMULARIO DE CONTACTO
      * Run the migrations.
      *
      * @return void

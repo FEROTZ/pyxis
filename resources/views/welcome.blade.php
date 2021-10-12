@@ -206,7 +206,7 @@
     <!--==========================
     Contacto Section
     ============================-->
-    @livewire('contact')
+    {{-- @livewire('contact') --}}
     <!-- #contact -->
 
 

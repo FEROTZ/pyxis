@@ -69,10 +69,13 @@
     @livewireStyles
 </head>
 <body>
+    {{-- Esta forma si sirve revisar si quitar forelse por foreach --}}
+@if(!empty($informacion))
+    @foreach($informacion as $data)
+        <a href="https://wa.me/{{$data->whatsapp}}" target="_blank" class="whats" data-toggle="tooltip"><img src="https://img.icons8.com/color/96/000000/whatsapp.png"/ alt="Whatsapp Logo"></a>
+    @endforeach
+@endif
 
-<a href="https://wa.me/525522793490" target="_blank" class="whats" data-toggle="tooltip"><img src="https://img.icons8.com/color/96/000000/whatsapp.png"/ alt="Whatsapp Logo"></a>
-
-<div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
         <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('img/principales/logo.png')}}" style="width: 60px;"></a>
@@ -83,8 +86,6 @@
 
             <ul class="navbar-nav">
                 <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Inicio</a> </li>
-
-
 
                 @foreach($menus as $menu)
                     @if($menu->padre_id == null && $menu->status)
@@ -137,17 +138,22 @@
                 </li>
 
             </ul>
-        </div>
 
+        </div>
         </div> <!-- navbar-collapse.// -->
     </nav>
-
-
     <main>
-
         @yield('content')
     </main>
 </div>
+
+
+
+<!--==========================
+    Contacto Section
+    ============================-->
+    @livewire('contact')
+    <!-- #contact -->
 
 <!-- footer -->
 <footer id="footer">
@@ -162,8 +168,17 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Contacto</h4>
                     <p><!-- aqui podemos poner la direccion -->
-                        <strong>Teléfono:</strong> +52 (55) 5112 7794<br>
-                        <strong>Correo:</strong> informacion@gepyxis.mx<br>
+                        
+                        @if(!empty($informacion))
+                            @foreach($informacion as $data)
+                                <strong>Teléfono:</strong> {{$data->phone}} <br>
+                                <strong>Correo:</strong> {{$data->email}} <br>
+                                <strong>Dirección:</strong> {{$data->address}} <br>
+                            @endforeach
+                        @else
+                            <strong>¡Proximamente!</strong><br>
+                        @endif
+                            
                     </p>
 
                     <div class="social-links">
@@ -177,12 +192,12 @@
 
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Aviso de Privacidad</h4>
-                    <a href=" {{route('aviso')}} "><img src="https://talamobile.mx/wp-content/uploads/sites/5/2019/03/SecuredData@2x.png" width="45%" height="60%"></a>
+                    <a href=" {{route('aviso')}} "><img src="https://talamobile.mx/wp-content/uploads/sites/5/2019/03/SecuredData@2x.png" width="120px" height="120px"></a>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Iniciar Sesión</h4>
-                    <a href=" {{route('login')}} "><img src="{{asset('img/principales/login.png')}}" width="40%" height="55%"></a>
+                    <a href=" {{route('login')}} "><img src="{{asset('img/principales/login.png')}}" width="120px" height="120px"></a>
                 </div>
             </div>
         </div>
