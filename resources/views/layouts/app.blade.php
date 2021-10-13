@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Metadata's -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv=”Content-Language” content=”es”/>
+    <meta name=”distribution” content=”global”/>
+    <meta name="Robots" content="all"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-
     <!-- Libraries CSS Files -->
     <link rel="stylesheet" href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
@@ -31,10 +32,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" href="{{ asset('') }}">
+
+
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
 
     <style>
         @media (min-width: 992px){

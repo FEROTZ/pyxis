@@ -17,10 +17,6 @@
                     <textarea name="introduccion" id="introduccion" type="text" class="form-control" placeholder="Ingresa una introducción">{{$producto->introduccion}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="txtDescripcion">Descripción</label>
-                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{$producto->descripcion}}</textarea>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputFile">Primera Imagen</label>
                     <div class="input-group">
                         <div class="custom-file">
@@ -31,6 +27,10 @@
                             <span class="input-group-text">Upload</span>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripción</label>
+                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{$producto->descripcion}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="txtContenido">Contenido</label>
@@ -64,10 +64,9 @@
                 <div class="form-group">
                     <label for="listClasificacion">Clasificación</label>
                     <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                        <option value="">Menu</option>
+                        {{-- <option value="">Menu</option> --}}
                         @foreach($clasificaciones as $clasificacion)
                             <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->clasficacion_id?'selected':''}}>{{$clasificacion->nombre}}</option>
-
                         @endforeach
                     </select>
                 </div>
