@@ -91,12 +91,10 @@
                 <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Inicio</a> </li>
 
                 @foreach($menus as $menu)
-                    @if($menu->padre_id == null && $menu->status)
+                    @if($menu->padre_id == 1 && $menu->status)
                         <li class="nav-item dropdown">
 
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  {{$menu->nombre}}  </a>
-
-
 
                             <ul class="dropdown-menu">
                                 @foreach($menu->menus as $producto)

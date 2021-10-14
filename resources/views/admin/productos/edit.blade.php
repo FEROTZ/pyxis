@@ -64,10 +64,16 @@
                 <div class="form-group">
                     <label for="listClasificacion">Clasificación</label>
                     <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                        {{-- <option value="">Menu</option> --}}
                         @foreach($clasificaciones as $clasificacion)
+                        {{-- @if ($clasificacion->id == productos->menu_id) {
                             <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->clasficacion_id?'selected':''}}>{{$clasificacion->nombre}}</option>
+                        }
+                        @else
+                            
+                        @endif --}}
+                        <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->clasficacion_id?'selected':''}}>{{$clasificacion->nombre}}</option>
                         @endforeach
+                        {{-- <option value="">Menu</option> --}}
                     </select>
                 </div>
                 <div class="form-group">

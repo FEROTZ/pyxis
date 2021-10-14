@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label for="listClasificacion">Clasificación</label>
                     <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                        <option value="">Menu</option>
+                        {{-- <option value="">Menu</option> --}}
                         @foreach($clasificaciones as $clasificacion)
                             <option value="{{$clasificacion->id}}">{{$clasificacion->nombre}}</option>
                             @endforeach

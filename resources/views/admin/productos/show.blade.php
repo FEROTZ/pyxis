@@ -38,21 +38,22 @@
 
                         <tbody>
                         @foreach($productos as $producto)
-                            <tr>
-                                <td>{{$producto->id}}</td>
-                                <td>{{$producto->nombre}}</td>
-                                <td>{{$producto->status_string}}</td>
-                                <td>{{$producto->slug}}</td>
-                                @if($producto->padre)
-                                <td>{{$producto->padre->nombre}}</td>
-                                @else
-                                    <td>Menu</td>
-                                @endif
+                            @if($producto->id != 1)
+                                <tr>
+                                    <td>{{$producto->id}}</td>
+                                    <td>{{$producto->nombre}}</td>
+                                    <td>{{$producto->status_string}}</td>
+                                    <td>{{$producto->slug}}</td>
+                                    @if($producto->padre)
+                                    <td>{{$producto->padre->nombre}}</td>
+                                    @else
+                                        <td>Menu</td>
+                                    @endif
 
-                                <td class="text-center"><a href="{{url("/admin/editar-productos/".$producto->id)}}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a></td>
-                                <td class="text-center"><button value="{{$producto->id}}" class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></button></td>
-                            </tr>
-
+                                    <td class="text-center"><a href="{{url("/admin/editar-productos/".$producto->id)}}" class="btn btn-secondary"><i class="fas fa-pencil-alt"></i></a></td>
+                                    <td class="text-center"><button value="{{$producto->id}}" class="btn btn-danger delete"><i class="fas fa-trash-alt"></i></button></td>
+                                </tr>
+                            @endif
                         @endforeach
 
                         </tbody>
