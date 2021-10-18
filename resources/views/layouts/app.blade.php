@@ -1,26 +1,27 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Metadata's -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv=”Content-Language” content=”es”/>
+    <meta name=”distribution” content=”global”/>
+    <meta name="Robots" content="all"/>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-
     <!-- Libraries CSS Files -->
     <link rel="stylesheet" href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
@@ -31,10 +32,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
+    <!-- Apple touch icon -->
+    <link rel="apple-touch-icon" href="{{ asset('') }}">
+
+
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
 
     <style>
         @media (min-width: 992px){
@@ -88,18 +91,13 @@
                 <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Inicio</a> </li>
 
                 @foreach($menus as $menu)
-                    @if($menu->padre_id == null && $menu->status)
+                    @if($menu->padre_id == 1 && $menu->status)
                         <li class="nav-item dropdown">
-
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  {{$menu->nombre}}  </a>
-
-
-
                             <ul class="dropdown-menu">
                                 @foreach($menu->menus as $producto)
                                     @if($producto->status)
                                     <li><a class="dropdown-item" href=" {{url($producto->padre->slug.'/'.$producto->slug)}} "> {{$producto->nombre}} </a>
-
                                             <ul class="submenu dropdown-menu">
                                                 @foreach($producto->menus as $categoria)
                                                     @if($categoria->status)
@@ -116,12 +114,10 @@
                                                     @endforeach
                                                     </li>
                                             </ul>
-
                                     </li>
                                     @endif
                                 @endforeach
                             </ul>
-
                         </li>
                     @endif
                         @endforeach
@@ -136,9 +132,7 @@
                         <a class="dropdown-item" href="{{url('#contacto')}}">Coctacto</a>
                     </div>
                 </li>
-
             </ul>
-
         </div>
         </div> <!-- navbar-collapse.// -->
     </nav>
@@ -146,9 +140,6 @@
         @yield('content')
     </main>
 </div>
-
-
-
 <!--==========================
     Contacto Section
     ============================-->
@@ -160,15 +151,12 @@
     <div class="footer-top">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-3 col-md-6 footer-info">
                     <a><img src="{!! asset('img/principales/logo.png') !!}" alt=""></a>
                 </div>
-
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Contacto</h4>
-                    <p><!-- aqui podemos poner la direccion -->
-                        
+                    <p>
                         @if(!empty($informacion))
                             @foreach($informacion as $data)
                                 <strong>Teléfono:</strong> {{$data->phone}} <br>
@@ -178,26 +166,21 @@
                         @else
                             <strong>¡Proximamente!</strong><br>
                         @endif
-                            
                     </p>
-
                     <div class="social-links">
                         <a href="https://twitter.com/gepyxis" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="https://www.facebook.com/Ge-Pyxis-313151499120781" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="https://www.instagram.com/gepyxis/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                         <a href="https://mx.linkedin.com/company/gpy22012208" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
                     </div>
-
                 </div>
-
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Aviso de Privacidad</h4>
-                    <a href=" {{route('aviso')}} "><img src="https://talamobile.mx/wp-content/uploads/sites/5/2019/03/SecuredData@2x.png" width="120px" height="120px"></a>
+                    <a href=" {{route('aviso-privacidad.watch')}} "><img src="https://talamobile.mx/wp-content/uploads/sites/5/2019/03/SecuredData@2x.png" width="90px" height="90px"></a>
                 </div>
-
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Iniciar Sesión</h4>
-                    <a href=" {{route('login')}} "><img src="{{asset('img/principales/login.png')}}" width="120px" height="120px"></a>
+                    <a href=" {{route('login')}} "><img src="{{asset('img/principales/login.png')}}" width="90px" height="90px"></a>
                 </div>
             </div>
         </div>

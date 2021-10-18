@@ -17,11 +17,10 @@
                     <textarea name="introduccion" id="introduccion" type="text" class="form-control" placeholder="Ingresa una introducción">{{$producto->introduccion}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="txtDescripcion">Descripción</label>
-                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{$producto->descripcion}}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">Primera Imagen</label>
+                    <label for="exampleInputFile" aria-describedby="PrimeraImgHelp">Primera Imagen</label>
+                    <small id="PrimeraImgHelp" class="form-text text-muted">
+                        Esta primer imagen aparecerá a la izquierda de la introducción.
+                    </small>
                     <div class="input-group">
                         <div class="custom-file">
                             <input name="imagen" type="file" class="custom-file-input" id="inputImagen">
@@ -31,6 +30,10 @@
                             <span class="input-group-text">Upload</span>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripción</label>
+                    <textarea name="descripcion" type="text" class="form-control" id="descripcion" placeholder="Ingresa la descripción">{{$producto->descripcion}}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="txtContenido">Contenido</label>
@@ -64,11 +67,16 @@
                 <div class="form-group">
                     <label for="listClasificacion">Clasificación</label>
                     <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                        <option value="">Menu</option>
                         @foreach($clasificaciones as $clasificacion)
+                        {{-- @if ($clasificacion->id == productos->menu_id) {
                             <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->clasficacion_id?'selected':''}}>{{$clasificacion->nombre}}</option>
-
+                        }
+                        @else
+                            
+                        @endif --}}
+                        <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->clasficacion_id?'selected':''}}>{{$clasificacion->nombre}}</option>
                         @endforeach
+                        {{-- <option value="">Menu</option> --}}
                     </select>
                 </div>
                 <div class="form-group">

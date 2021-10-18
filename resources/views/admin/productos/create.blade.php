@@ -24,7 +24,10 @@
                     <textarea name="introduccion" id="introduccion" type="text" class="form-control" placeholder="Ingresa una introducción">{{old("introduccion")}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">Primera Imagen</label>
+                    <label for="exampleInputFile" aria-describedby="PrimeraImgHelp">Primera Imagen</label>
+                    <small id="PrimeraImgHelp" class="form-text text-muted">
+                        Esta primer imagen aparecerá a la izquierda de la introducción.
+                    </small>
                     <div class="input-group">
                         <div class="custom-file">
                             <input name="imagen" value="{{old("imagen")}}" type="file" class="custom-file-input" id="inputImagen" aria-describedby="ImagenHelp">
@@ -67,7 +70,7 @@
                 <div class="form-group">
                     <label for="listClasificacion">Clasificación</label>
                     <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                        <option value="">Menu</option>
+                        {{-- <option value="">Menu</option> --}}
                         @foreach($clasificaciones as $clasificacion)
                             <option value="{{$clasificacion->id}}">{{$clasificacion->nombre}}</option>
                             @endforeach

@@ -34,7 +34,7 @@ class InformacionController extends Controller
                 'Email'     => 'required|email',
                 'Whatsapp'  => 'required',
                 'Facebook'  => 'required',
-                'Instagram'  => 'required',
+                'Instagram' => 'required',
                 'Linkedin'  => 'required',
             ]);
     
@@ -71,7 +71,6 @@ class InformacionController extends Controller
             return (redirect('admin/informacion')->with(compact('guardado')));
         } catch (Exception $e) {                  
             $fallo = "Error al guardar la información";
-            return "esta wea fallo";
         }
 
     }

@@ -23,8 +23,8 @@ class WelcomeController extends Controller
     {
         $menus       = Menu::all();
         $imagenes    = ProductoImagen::where('destacado',true)->get();
+        //Trae la información de contacto para gepyxis
         $informacion = Informacion::all();
-        // $informacion = Informacion::where('id', 8);
 
         return view('welcome')->with(compact("imagenes", "informacion"));
     }

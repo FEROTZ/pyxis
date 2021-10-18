@@ -2,7 +2,7 @@
 @section('title')
     <div class="row">
         <div class="col-6">
-            <h1 class="m-0"> Mensaje recibido</h1>
+            <h1 class="m-0"> Mensaje Recibido</h1>
         </div>
         
     </div>

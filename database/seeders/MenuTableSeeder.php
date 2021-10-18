@@ -15,6 +15,10 @@ class MenuTableSeeder extends Seeder
      */
     public function run()
     {
-
+        Menu::create([
+            'id' => 1,
+            'nombre' => 'Menu',
+            'slug' => '',
+        ]);
     }
 }

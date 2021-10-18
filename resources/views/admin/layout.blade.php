@@ -5,8 +5,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="es">
 <head>
+    <!-- Metadata's -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
     <title>Administrador</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -114,8 +119,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li> --}}
 
                     <!-- menu1 -->
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
+                    <li class="nav-item ">
+                        <a href="#" class="nav-link ">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
                                 Editar Información
@@ -124,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route("informacion.create")}}" class="nav-link active">
+                                <a href="{{route("informacion.create")}}" class="nav-link ">
                                     <i class="far fa-id-card nav-icon"></i>
                                     <p>Contacto</p>
                                 </a>
