@@ -27,10 +27,7 @@ Route::post('contactanos', [\App\Http\Controllers\SendEmailController::class, 's
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, "index"])->name('welcome.show');
 
-
-Route::get('/aviso', function () {
-    return view('cliente.aviso');
-})->name('aviso');
+Route::get('/aviso', [App\Http\Controllers\AvPrivacidadController::class, "index"])->name('aviso-privacidad.watch');
 
 Route::get('/login', function () {
     return view('admin.auth.login');
@@ -57,8 +54,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/informacion', [App\Http\Controllers\InformacionController::class, "create"])->name('informacion.create');
     Route::post('/actualizar-informacion', [App\Http\Controllers\InformacionController::class, "store"])->name('informacion.store');
     //Editar aviso de privacidad
-    Route::get('/aviso-privacidad', [App\Http\Controllers\InformacionController::class, "create"])->name('aviso-privacidad.create');
-    Route::post('/actualizar-aviso-privacidad', [App\Http\Controllers\InformacionController::class, "store"])->name('aviso-privacidad.store');
+    Route::get('/aviso-privacidad', [App\Http\Controllers\AvPrivacidadController::class, "create"])->name('aviso-privacidad.create');
+    Route::post('/actualizar-aviso-privacidad', [App\Http\Controllers\AvPrivacidadController::class, "store"])->name('aviso-privacidad.store');
 });
 
 Auth::routes();
