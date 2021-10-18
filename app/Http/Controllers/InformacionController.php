@@ -34,7 +34,7 @@ class InformacionController extends Controller
                 'Email'     => 'required|email',
                 'Whatsapp'  => 'required',
                 'Facebook'  => 'required',
-                'Instagram'  => 'required',
+                'Instagram' => 'required',
                 'Linkedin'  => 'required',
             ]);
     
