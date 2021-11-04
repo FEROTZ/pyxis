@@ -19,8 +19,14 @@ class CreateMenusTable extends Migration
             $table->longText('introduccion')->nullable();
             $table->longText('descripcion')->nullable();
             $table->string('imagen')->nullable();
+            $table->string('imagenDesc')->nullable();
             $table->longText('contenido')->nullable();
             $table->string('imagen2')->nullable();
+            $table->string('imagen2Desc')->nullable();
+            $table->json('preguntas')->nullable();
+            $table->json('respuestas')->nullable();
+            $table->string('imagenLogo')->nullable();
+            $table->string('imagenLogoDesc')->nullable();
             $table->longText('diferenciadores')->nullable();
             $table->boolean('status')->nullable();
             $table->longText('carac_adi')->nullable();

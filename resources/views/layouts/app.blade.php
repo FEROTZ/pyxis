@@ -71,7 +71,7 @@
 
     @livewireStyles
 </head>
-<body>
+<body style="overflow-x:hidden;">
     {{-- Esta forma si sirve revisar si quitar forelse por foreach --}}
 @if(!empty($informacion))
     @foreach($informacion as $data)
@@ -152,27 +152,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 footer-info">
-                    <a><img src="{!! asset('img/principales/logo.png') !!}" alt=""></a>
+                    <a><img src="{!! asset('img/principales/logo.png') !!}" alt="Logo de GePyxis"></a>
                 </div>
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Contacto</h4>
-                    <p>
-                        @if(!empty($informacion))
-                            @foreach($informacion as $data)
+                    @if(!empty($informacion))
+                        @foreach($informacion as $data)
+                            <p>
                                 <strong>Teléfono:</strong> {{$data->phone}} <br>
                                 <strong>Correo:</strong> {{$data->email}} <br>
                                 <strong>Dirección:</strong> {{$data->address}} <br>
-                            @endforeach
-                        @else
-                            <strong>¡Proximamente!</strong><br>
-                        @endif
-                    </p>
-                    <div class="social-links">
-                        <a href="https://twitter.com/gepyxis" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/Ge-Pyxis-313151499120781" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/gepyxis/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="https://mx.linkedin.com/company/gpy22012208" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                    </div>
+                            </p>
+                            <div class="social-links">
+                                <a href="{{$data->twitter}}" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="{{$data->facebook}}" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="{{$data->instagram}}" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="{{$data->linkedin}}" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>
+                            <strong>¡Proximamente!</strong>
+                        </p>
+                        
+                    @endif
                 </div>
                 <div class="col-lg-3 col-md-6 footer-newsletter">
                     <h4>Aviso de Privacidad</h4>

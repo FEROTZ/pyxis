@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     <title>Ge Pyxis</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
 
     <!-- Favicons -->
     <link href="assets/icono.png" rel="icon">

@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
+
+    // protected $casts = [
+    //     'preguntas' => 'array',
+    //     'respuestas' => 'array',
+    // ];
+
     public function padre()
     {
         return $this->belongsTo(Menu::class);

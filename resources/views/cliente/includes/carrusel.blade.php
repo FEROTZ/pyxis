@@ -2,11 +2,10 @@
 
     <!-- Swiper -->
     <div class="swiper-container principal">
-                <div class="swiper-wrapper">
-                    @foreach($imagenes as $imagen)
-                    <div class="swiper-slide"><img class="primary-img" src="{{ asset($imagen->imagen_producto) }}"></div>
-                    @endforeach
-
+        <div class="swiper-wrapper">
+            @foreach($imagenes as $imagen)
+                <div class="swiper-slide"><img class="primary-img" src="{{ asset($imagen->imagen_producto) }}"></div>
+            @endforeach
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
@@ -30,7 +29,7 @@
             pagination: {
                 el: '.swiper-pagination'
             },
-            mousewheel: true,
+            // mousewheel: true,
             keyboard: true,
         });
     </script>

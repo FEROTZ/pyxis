@@ -29,36 +29,51 @@ class ProductoController extends Controller
     //Guardar el producto en la base de datos
     public function store(Request $request)
     {
+        
         $validated=$request->validate([
-            'nombre' => 'nullable|unique:menus|max:40',
-            'introduccion' => 'nullable|max:1000',
-            'descripcion' => 'nullable|max:1000',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
-            'contenido' => 'nullable|max:1000',
+            'nombre'          => 'nullable|unique:menus|max:40',
+            'introduccion'    => 'nullable|max:1000',
+            'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
+            'imagenDesc'      => 'nullable',
+            'descripcion'     => 'nullable|max:1000',
+            'contenido'       => 'nullable|max:1000',
             'diferenciadores' => 'nullable|max:1000',
-            'imagen2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
-            'status' => 'nullable',
-            'carac_adi' => 'nullable|max:1000',
-            'info_adi' => 'nullable|max:1000',
+            'imagen2'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
+            'imagen2Desc'     => 'nullable',
+            'preguntas'       => 'nullable',
+            'respuestas'      => 'nullable',
+            'imagenLogo'      => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
+            'imagenLogoDesc'  => 'nullable',
+            'status'          => 'nullable',
+            'carac_adi'       => 'nullable|max:1000',
+            'info_adi'        => 'nullable|max:1000',
         ]);
 
+
+        $preguntas = json_encode($request->preguntas);
+        $respuestas = json_encode($request->respuestas);
 
         $producto = new Menu();
         $producto->nombre = $request->nombre;
         $producto->introduccion = $request->introduccion;
         $producto->descripcion = $request->descripcion;
         $producto->contenido = $request->contenido;
+        $producto->preguntas = $preguntas;
+        $producto->respuestas = $respuestas;
         $producto->diferenciadores = $request->diferenciadores;
         $producto->status = $request->status;
         $producto->carac_adi = $request->carac_adi;
         $producto->info_adi = $request->info_adi;
+        $producto->imagenDesc = $request->imagenDesc;
+        $producto->imagen2Desc = $request->imagen2Desc;
+        $producto->imagenLogoDesc = $request->imagenLogoDesc;
         $producto->padre_id = $request->clasificacion;
         $producto->slug = Str::slug($request->nombre);
+
+//Intervención Imagen 1
         if ($request->imagen) {
             $image = $request->imagen;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
-
-//Intervention Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -69,11 +84,11 @@ class ProductoController extends Controller
                 $producto->imagen = $imageName;
             }
         }
+
+//Intervención Imagen 2
         if ($request->imagen2) {
             $image = $request->imagen2;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
-
-//Intervention Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -85,11 +100,25 @@ class ProductoController extends Controller
             }
         }
 
+//Intervención Imagen Logo
+        if ($request->imagenLogo) {
+            $image = $request->imagenLogo;
+            $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
+            $imageResize = ImageIntervention::make($image)
+                ->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            $simplePath = 'img/productos';
+            $path = 'img/productos/' . $imageName;
+            if ($imageResize->save($path, 100, 'webp')) {
+                $producto->imagenLogo = $imageName;
+            }
+        }
+
 
         $producto->save();
 
-
-
+//Imagenes del carrusel de la pagina.
         if ($request->file('imagenes')) {
             foreach ($request->file('imagenes') as $image){
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
@@ -110,6 +139,7 @@ class ProductoController extends Controller
         }
         }
 
+//Imagen que va en el carrusel de la pagina de inicio.
         if ($request->file('bienvenida')) {
             $image = $request->bienvenida;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
@@ -125,7 +155,7 @@ class ProductoController extends Controller
                 $productoImagen = new ProductoImagen();
                 $productoImagen->imagen = $imageName;
                 $productoImagen->menu_id = $producto->id;
-                $productoImagen->destacado = true;
+                $productoImagen->destacado = false;
                 $productoImagen->carrusel = true;
                 $productoImagen->save();
             }
@@ -154,17 +184,26 @@ class ProductoController extends Controller
     //Actualizar los productos
     public function update(Request $request, $id)
     {
+        $preguntas = json_encode($request->preguntas);
+        $respuestas = json_encode($request->respuestas);
+
         $producto = Menu::find($id);
         $producto->nombre = $request->nombre;
         $producto->introduccion = $request->introduccion;
         $producto->descripcion = $request->descripcion;
         $producto->contenido = $request->contenido;
+        $producto->preguntas = $preguntas;
+        $producto->respuestas = $respuestas;
         $producto->diferenciadores = $request->diferenciadores;
         $producto->status = $request->status;
         $producto->carac_adi = $request->carac_adi;
         $producto->info_adi = $request->info_adi;
+        $producto->imagenDesc = $request->imagenDesc;
+        $producto->imagen2Desc = $request->imagen2Desc;
+        $producto->imagenLogoDesc = $request->imagenLogoDesc;
         $producto->padre_id = $request->clasificacion;
         $producto->slug = Str::slug($request->nombre);
+
 
 
         $simplePath = 'img/productos';
@@ -175,7 +214,7 @@ class ProductoController extends Controller
             $image = $request->imagen;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
 
-//Intervention Image
+//Intervención Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -193,7 +232,7 @@ class ProductoController extends Controller
             $image = $request->imagen2;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
 
-//Intervention Image
+//Intervención Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -205,22 +244,39 @@ class ProductoController extends Controller
             }
         }
 
+//Intervención ImagenLogoDesc
+        if ($request->imagenLogo) {
+            $image = $request->imagenLogo;
+            $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
+            $imageResize = ImageIntervention::make($image)
+                ->resize(500, 500, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            $simplePath = 'img/productos';
+            $path = 'img/productos/' . $imageName;
+            if ($imageResize->save($path, 100, 'webp')) {
+                $producto->imagenLogo = $imageName;
+            }
+        }
+
 
         $producto->save();
 
-        if ($request->destacado != true){
-            $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
-            if($imagenDestacada){
-                $imagenDestacada->destacado = false;
-                $imagenDestacada->save();
-            }
+//Creo es el encargado de mostrar la imagen en HOME
+        // if ($request->destacado != true){
+        //     $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
+        //     if($imagenDestacada){
+        //         $imagenDestacada->destacado = false;
+        //         $imagenDestacada->save();
+        //     }
 
-        } else{
-            $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
-            $imagenDestacada->destacado = true;
-            $imagenDestacada->save();
-        }
-
+        // } else{
+        //     $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
+        //     $imagenDestacada->destacado = true;
+        //     $imagenDestacada->save();
+        // }
+        
+//Intervención Imagenes carrusel
         if ($request->file('imagenes')) {
             $simplePath = 'img/productos';
             foreach ($producto->imagenes as $imagen){
@@ -230,7 +286,6 @@ class ProductoController extends Controller
             foreach ($request->file('imagenes') as $image){
                 $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
 
-//Intervention Image
                 $imageResize = ImageIntervention::make($image)
                     ->resize(500, 500, function ($constraint) {
                         $constraint->aspectRatio();
