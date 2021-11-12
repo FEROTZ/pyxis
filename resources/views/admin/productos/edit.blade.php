@@ -89,8 +89,8 @@
                         Esta breve descripción se mostrará en caso de que la imagen no se pueda cargar.
                     </small>
                     <input value="{{$producto->imagenDesc}}"
-                        name="PrimeraImgDesc" type="text" 
-                        class="form-control" id="PrimeraImgDesc"
+                        name="imagenDesc" type="text" 
+                        class="form-control" id="imagenDesc"
                         placeholder="Ingresa la descripción de la primera imagen">
                 </div>
                 <div class="form-group">
@@ -155,9 +155,9 @@
                         Esta breve descripción se mostrará en caso de que la imagen no se pueda cargar.
                     </small>
                     <input value="{{$producto->imagen2Desc}}"
-                        name="SegundaImgDesc"
+                        name="imagen2Desc"
                         type="text" class="form-control"
-                        id="SegundaImgDesc" 
+                        id="imagen2Desc" 
                         placeholder="Ingresa la descripción de la segunda imagen"/>
                 </div>
                 <div class="container">
@@ -209,8 +209,8 @@
                         Esta breve descripción se mostrará en caso de que la imagen no se pueda cargar.
                     </small>
                     <input value="{{$producto->imagenLogoDesc}}"
-                        name="LogoImgDesc" type="text"
-                        class="form-control" id="LogoImgDesc"
+                        name="imagenLogoDesc" type="text"
+                        class="form-control" id="imagenLogoDesc"
                         placeholder="Ingresa la descripción de la imagen logo"/>
                 </div>
 

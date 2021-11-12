@@ -81,59 +81,64 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-        <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('img/principales/logo.png')}}" style="width: 60px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main_nav">
+            <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('img/principales/logo.png')}}" style="width: 60px;"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_nav">
 
-            <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Inicio</a> </li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/')}}">Inicio</a> </li>
 
-                @foreach($menus as $menu)
-                    @if($menu->padre_id == 1 && $menu->status)
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  {{$menu->nombre}}  </a>
-                            <ul class="dropdown-menu">
-                                @foreach($menu->menus as $producto)
-                                    @if($producto->status)
-                                    <li><a class="dropdown-item" href=" {{url($producto->padre->slug.'/'.$producto->slug)}} "> {{$producto->nombre}} </a>
-                                            <ul class="submenu dropdown-menu">
-                                                @foreach($producto->menus as $categoria)
-                                                    @if($categoria->status)
-                                                    <li><a class="dropdown-item" href="{{url($producto->slug.'/'.$categoria->slug)}}"> {{$categoria->nombre}} </a>
-                                                        <ul class="submenu dropdown-menu">
-                                                            @foreach($categoria->menus as $sub_categoria)
-                                                                @if($sub_categoria->status)
-                                                                <li><a class="dropdown-item" href="{{url($producto->slug."/".$sub_categoria->slug)}}"> {{$sub_categoria->nombre}} </a></li>
-                                                                @endif
-                                                            @endforeach
-                                                        </ul>
-                                                    </li>
-                                                    @endif
-                                                    @endforeach
-                                                    </li>
-                                            </ul>
-                                    </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                    @endif
-                        @endforeach
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pyxis
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{url('/#about')}}">¿Quienes Somos?</a>
-                        <a class="dropdown-item" href="{{url('/#clientes')}}">Clientes</a>
-                        <a class="dropdown-item" href="{{url('/#socios')}}">Socios Estrategicos</a>
-                        <a class="dropdown-item" href="{{url('#contacto')}}">Coctacto</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                    @foreach($menus as $menu)
+                        @if($menu->padre_id == 1 && $menu->status)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  {{$menu->nombre}}  </a>
+                                <ul class="dropdown-menu">
+                                    @foreach($menu->menus as $producto)
+                                        @if($producto->status)
+                                        <li><a class="dropdown-item" href=" {{url($producto->padre->slug.'/'.$producto->slug)}} "> {{$producto->nombre}} </a>
+                                                <ul class="submenu dropdown-menu">
+                                                    @foreach($producto->menus as $categoria)
+                                                        @if($categoria->status)
+                                                        <li><a class="dropdown-item" href="{{url($producto->slug.'/'.$categoria->slug)}}"> {{$categoria->nombre}} </a>
+                                                            <ul class="submenu dropdown-menu">
+                                                                @foreach($categoria->menus as $sub_categoria)
+                                                                    @if($sub_categoria->status)
+                                                                    <li><a class="dropdown-item" href="{{url($producto->slug."/".$sub_categoria->slug)}}"> {{$sub_categoria->nombre}} </a></li>
+                                                                    @endif
+                                                                @endforeach
+                                                            </ul>
+                                                        </li>
+                                                        @endif
+                                                        @endforeach
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
+                            @endforeach
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pyxis
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('/#about')}}">¿Quienes Somos?</a>
+                            <a class="dropdown-item" href="{{url('/#clientes')}}">Clientes</a>
+                            <a class="dropdown-item" href="{{url('/#socios')}}">Socios Estrategicos</a>
+                            <a class="dropdown-item" href="{{url('#contacto')}}">Coctacto</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            @if(!empty($servicio))
+                <div class="logo">
+                    <img src="{{ asset ('img/productos/' . $servicio->imagenLogo)}}" alt="{{$servicio->imagenLogoDesc}}">
+                </div>
+            @endif 
         </div> <!-- navbar-collapse.// -->
     </nav>
     <main>
@@ -172,7 +177,7 @@
                         @endforeach
                     @else
                         <p>
-                            <strong>¡Proximamente!</strong>
+                            <strong>¡Próximamente!</strong>
                         </p>
                         
                     @endif

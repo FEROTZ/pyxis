@@ -74,7 +74,7 @@ class WelcomeController extends Controller
             }
 
         }
-
+        // return $servicio;
         return view("cliente.productos.show")->with(compact("servicio","imagenesP", "informacion"));
     }
 

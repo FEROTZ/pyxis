@@ -9,11 +9,6 @@ class Menu extends Model
 {
     use HasFactory;
 
-    // protected $casts = [
-    //     'preguntas' => 'array',
-    //     'respuestas' => 'array',
-    // ];
-
     public function padre()
     {
         return $this->belongsTo(Menu::class);
@@ -32,6 +27,12 @@ class Menu extends Model
         $imagen2 = $this->imagen2;
         if ($imagen2){
             return '/img/productos/'.$imagen2;
+        }
+    }
+    public function getImagenProductoLogoAttribute(){
+        $imagenLogo = $this->imagenLogo;
+        if ($imagenLogo){
+            return '/img/productos/'.$imagenLogo;
         }
     }
     public function imagenes(){

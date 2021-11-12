@@ -105,7 +105,7 @@ class ProductoController extends Controller
             $image = $request->imagenLogo;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
             $imageResize = ImageIntervention::make($image)
-                ->resize(500, 500, function ($constraint) {
+                ->resize(80, 190, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             $simplePath = 'img/productos';
@@ -114,7 +114,6 @@ class ProductoController extends Controller
                 $producto->imagenLogo = $imageName;
             }
         }
-
 
         $producto->save();
 
@@ -177,6 +176,7 @@ class ProductoController extends Controller
         $clasificaciones = Menu::all();
         $imagenDestacada = ProductoImagen::where('destacado', true)->where('menu_id', $id)->get();
         $imagenDestacada = $imagenDestacada->count() > 0;
+        // return $producto;
         return view("admin.productos.edit")->with(compact("producto","clasificaciones", "imagenDestacada"));
     }
 
@@ -184,6 +184,7 @@ class ProductoController extends Controller
     //Actualizar los productos
     public function update(Request $request, $id)
     {
+        // return $request;
         $preguntas = json_encode($request->preguntas);
         $respuestas = json_encode($request->respuestas);
 
@@ -207,6 +208,7 @@ class ProductoController extends Controller
 
 
         $simplePath = 'img/productos';
+//Intervención Imagen1
         if ($request->imagen) {
             if ($producto->imagen){
                 File::delete($simplePath.$producto->imagen);
@@ -214,7 +216,6 @@ class ProductoController extends Controller
             $image = $request->imagen;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
 
-//Intervención Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -225,6 +226,7 @@ class ProductoController extends Controller
                 $producto->imagen = $imageName;
             }
         }
+//Intervención Imagen2
         if ($request->imagen2) {
             if ($producto->imagen2){
                 File::delete($simplePath.$producto->imagen2);
@@ -232,7 +234,6 @@ class ProductoController extends Controller
             $image = $request->imagen2;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
 
-//Intervención Image
             $imageResize = ImageIntervention::make($image)
                 ->resize(500, 500, function ($constraint) {
                     $constraint->aspectRatio();
@@ -244,12 +245,12 @@ class ProductoController extends Controller
             }
         }
 
-//Intervención ImagenLogoDesc
+//Intervención ImagenLogo
         if ($request->imagenLogo) {
             $image = $request->imagenLogo;
             $imageName = uniqid() . '-' . Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME), '-') . '.webp';
             $imageResize = ImageIntervention::make($image)
-                ->resize(500, 500, function ($constraint) {
+                ->resize(170, 170, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             $simplePath = 'img/productos';
