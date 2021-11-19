@@ -21,6 +21,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin-lte/dist/css/adminlte.min.css')}}">
 
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{asset('css/dash-estilos.css')}}">
+
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -142,7 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{route("productos.show")}}" class="nav-link">
+                                <a href="{{route("carrusel.show")}}" class="nav-link">
                                     <i class="far fa-images nav-icon"></i>
                                     <p>Carrusel de Inicio</p>
                                 </a>
@@ -316,6 +319,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{asset('admin-lte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 
+<!-- Sweet Alert 2 -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- Sellect2 -->
 <script src="{{asset('admin-lte/plugins/select2/js/select2.full.min.js')}}"></script>
 
@@ -328,8 +334,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Page specific script -->
 
 <script>
+// Tabla de productos
     $(function () {
-
         $('#productos-table').DataTable({
             "paging": true,
             "lengthChange": true,
@@ -356,6 +362,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     })
 
+// Tabla de mensajes Recibidos
     $(function () {
 
     $('#messages-table').DataTable({
@@ -367,7 +374,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
         "autoWidth": false,
         "responsive": true,
         // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    }).buttons().container().appendTo('#productos-table_wrapper .col-md-6:eq(0)');
+    }).buttons().container().appendTo('#messages-table_wrapper .col-md-6:eq(0)');
+
+    $('.select2').select2();
+
+    $('.tags').select2({
+        tags:true,
+        maximumSelectionLength: 4
+    });
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+        theme: 'bootstrap4'
+    })
+    /* jQueryKnob */
+
+    })
+
+// Tabla de carrusel de imagenes
+    $(function () {
+
+    $('#imagenes-table').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+    }).buttons().container().appendTo('#imagenes-table_wrapper .col-md-6:eq(0)');
 
     $('.select2').select2();
 

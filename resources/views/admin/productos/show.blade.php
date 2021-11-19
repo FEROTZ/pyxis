@@ -67,11 +67,23 @@
 
 @section("scripts")
 <script>
+
     $('#productos-table').on('click', '.delete', function() {
         var id = $(this).val();
-        var desicion = confirm("Seguro que desea eliminar este producto");
-        if (desicion) {
-            $.ajax({
+        Swal.fire({
+        title: 'Deseas eliminar el producto?',
+        icon: 'question',
+        showCancelButton: true,
+        buttonsStyling: false,
+        customClass: {
+            confirmButton: 'btn btn-danger m-3',
+            cancelButton: 'btn btn-secondary m-3',
+        },
+        confirmButtonText: 'Eliminar',
+        cancelButtonText: `Cancelar`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
                 type: 'POST',
                 url: "/admin/eliminar-producto/" + id,
                 data: {
@@ -79,14 +91,31 @@
                     'id': id,
                 },
                 success: function (data) {
-                    alert("Producto eliminado");
+                    Swal.fire({
+                        title: 'El producto fue eliminado con exito!',
+                        text: '',
+                        icon:'success',
+                        timer: 2000,
+                    })
                     location.reload();
 
                 },
                 error: function () {
+                    Swal.fire({
+                        title: 'No se pudo eliminar el producto',
+                        text: 'Algunos productos dependen de la existencia de este producto, cambia al padre de esos productos o en su defecto eliminalos antes de este.',
+                        icon: 'error',
+                    })
                 }
             });
-        }
+                
+            } else if (result.isDenied) {
+                Swal.fire('Algo salio mal, contacta a soporte tecnico', '', 'info')
+            }
+        })
+        
     });
+
+    
 </script>
 @endsection

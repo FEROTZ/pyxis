@@ -4,9 +4,13 @@
     <!-- Metadata's -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Fernando cortés">
+    <meta name="copyright" content="Ricardo del Rosario" />
+    @if ()
+    @else
+        <meta name="description" content="Descripción de prueba para la página welcome">
+        <meta name="keywords" content="descripción, prueba, gepixys, welcome">
+    @endif
     <meta http-equiv=”Content-Language” content=”es”/>
     <meta name=”distribution” content=”global”/>
     <meta name="Robots" content="all"/>

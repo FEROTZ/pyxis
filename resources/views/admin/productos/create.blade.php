@@ -1,40 +1,5 @@
 @extends("admin.layout")
 @section("content")
-<style media="screen">
-
-    #loader {
-        position: absolute;
-        left: 60%;
-        top: 50%;
-        z-index: 1;
-        width: 120px;
-        height: 120px;
-        margin: -76px 0 0 -76px;
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #3b46e2;
-        border-bottom: 16px solid #e4312b;
-        border-right: 16px solid rgb(218, 198, 24);
-        -webkit-animation: spin 2s linear infinite;
-        animation: spin 2s linear infinite;
-    }
-
-    @-webkit-keyframes spin {
-        0% { -webkit-transform: rotate(0deg); }
-        100% { -webkit-transform: rotate(360deg); }
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    #myDiv {
-        display: none;
-        
-    }
-
-</style>
 <body onload="loader()">
     @if ($errors->any())
         <div class="alert alert-danger col-12"><ul>

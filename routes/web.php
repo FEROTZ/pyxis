@@ -56,6 +56,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Editar aviso de privacidad
     Route::get('/aviso-privacidad', [App\Http\Controllers\AvPrivacidadController::class, "create"])->name('aviso-privacidad.create');
     Route::post('/actualizar-aviso-privacidad', [App\Http\Controllers\AvPrivacidadController::class, "store"])->name('aviso-privacidad.store');
+    //Carrusel de página de inicio
+    Route::get('/carrusel-inicio', [App\Http\Controllers\Admin\CarruselInicio::class, "index"])->name('carrusel.show');
+    Route::post('/actualizar-carrusel', [App\Http\Controllers\Admin\CarruselInicio::class, "update"])->name('carrusel.update');
+
+
 });
 
 Auth::routes();

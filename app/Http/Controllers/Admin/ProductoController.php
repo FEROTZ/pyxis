@@ -154,7 +154,6 @@ class ProductoController extends Controller
                 $productoImagen = new ProductoImagen();
                 $productoImagen->imagen = $imageName;
                 $productoImagen->menu_id = $producto->id;
-                $productoImagen->destacado = false;
                 $productoImagen->carrusel = true;
                 $productoImagen->save();
             }
@@ -262,20 +261,6 @@ class ProductoController extends Controller
 
 
         $producto->save();
-
-//Creo es el encargado de mostrar la imagen en HOME
-        // if ($request->destacado != true){
-        //     $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
-        //     if($imagenDestacada){
-        //         $imagenDestacada->destacado = false;
-        //         $imagenDestacada->save();
-        //     }
-
-        // } else{
-        //     $imagenDestacada = ProductoImagen::where('carrusel', true)->where('menu_id', $producto->id)->first();
-        //     $imagenDestacada->destacado = true;
-        //     $imagenDestacada->save();
-        // }
         
 //Intervención Imagenes carrusel
         if ($request->file('imagenes')) {
@@ -304,7 +289,7 @@ class ProductoController extends Controller
         }
 
         if ($request->bienvenida) {
-            $bienvenida = ProductoImagen::where('destacado', true)->where('menu_id', $producto->id)->first();
+            $bienvenida = ProductoImagen::where('menu_id', $producto->id)->first();
             if ($bienvenida){
                 File::delete($simplePath.$bienvenida->imagen);
                 $bienvenida->delete();
@@ -322,7 +307,6 @@ class ProductoController extends Controller
             if ($imageResize->save($path, 100, 'webp')) {
                 $bienvenida = new ProductoImagen();
                 $bienvenida->imagen = $imageName;
-                $bienvenida->destacado = true;
                 $bienvenida->menu_id = $producto->id;
                 $bienvenida->save();
             }

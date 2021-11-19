@@ -32,6 +32,7 @@ class CreateMenusTable extends Migration
             $table->longText('carac_adi')->nullable();
             $table->longText('info_adi')->nullable();
             $table->string('slug');
+            $table->string('metadatos')->nullable();;
             $table->timestamps();
             //FK
             $table->unsignedBigInteger('padre_id')->nullable();
