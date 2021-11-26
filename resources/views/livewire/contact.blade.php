@@ -38,7 +38,7 @@
                             <div class="contact-phone">
                                 <i class="ion-ios-telephone-outline"></i>
                                 <h3>Teléfono</h3>
-                                <p><a>¡Proximamente!</a></p>
+                                <p><a>¡Próximamente!</a></p>
                             </div>
                         </div>
 
@@ -46,7 +46,7 @@
                             <div class="contact-address">
                                 <i class="ion-ios-location-outline"></i>
                                 <h3>Dirección</h3>
-                                <p><a>¡Proximamente!</a></p>
+                                <p><a>¡Próximamente!</a></p>
                             </div>
                         </div>
         
@@ -54,7 +54,7 @@
                             <div class="contact-email">
                                 <i class="ion-ios-email-outline"></i>
                                 <h3>Correo</h3>
-                                <p><a>¡Proximamente!</a></p>
+                                <p><a>¡Próximamente!</a></p>
                             </div>
                         </div>
                     @endforelse

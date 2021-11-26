@@ -1,5 +1,13 @@
 @extends("layouts.app")
+@section('title',$viewmeta->get('product_meta_title'))
+@section('description',$viewmeta->get('product_meta_description'))
+@section('keywords',$viewmeta->get('product_meta_keywords'))
 @section("content")
+<style media="screen">
+    
+
+
+</style>
     <div class="swiper-container principal">
         <div class="swiper-wrapper">
             @foreach($imagenesP as $imagen)
@@ -39,7 +47,7 @@
                 </div>
                 <div class="col-12 col-lg-5">
                     <div class="mb-100">
-                        <img src="{{$servicio->imagen_producto1}}" alt="">
+                        <img src="{{$servicio->imagen_producto1}}" alt="{{$servicio->imagenDesc}}">
                     </div>
                 </div>
             </div>
@@ -61,6 +69,8 @@
                 <div class="row">
                     <div class="col-12">
                         {!! $servicio->contenido !!}
+                        {{-- IMPRIMIR
+                                {{$servicio}} --}}
                     </div>
                 </div>
             </div>
@@ -88,7 +98,7 @@
                 <div class="row justify-content-between">
                     <div class="col-12 col-lg-5">
                         <div class="mb-100">
-                            <img src="{{$servicio->imagen_producto2}}" alt="">
+                            <img src="{{$servicio->imagen_producto2}}" alt="{{$servicio->imagen2Desc}}">
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
@@ -96,6 +106,7 @@
                             <!-- Section Heading -->
                             <div class="section-heading ">
                                 {!! $servicio->info_adi !!}
+                                
                             </div>
                         </div>
                     </div>
@@ -103,6 +114,59 @@
             </div>
         </section>
     </section>
+    
+    <div class="faq_area section_padding_130" id="faq">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-8 col-lg-6">
+                    <!-- Section Heading-->
+                    @php
+                        $preguntas = json_decode($servicio->preguntas);
+                        $respuestas = json_decode($servicio->respuestas);
+                    @endphp
+                    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                    style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <h3><span>Preguntas </span> Frecuentes</h3>
+                        <p>En este apartado encontraras las respuestas a las preguntas mas comunes de nuestros clientes.</p>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <!-- FAQ Area-->
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="accordion faq-accordian" id="faqAccordion">
+                        @for($i = 0; $i < @count($preguntas); $i++)
+                            <div class="card border-0 wow fadeInUp" data-wow-delay="0.2s"
+                                style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                                <div class="card-header" id="heading{{$i}}">
+                                    <h6 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapse{{$i}}"
+                                    aria-expanded="true" aria-controls="collapse{{$i}}">
+                                        {{$preguntas[$i]}}<span class="lni-chevron-up"></span>
+                                    </h6>
+                                </div>
+                                <div class="collapse" id="collapse{{$i}}"
+                                    aria-labelledby="heading{{$i}}" data-parent="#faqAccordion">
+                                    <div class="card-body">
+                                        <p>{{$respuestas[$i]}}</p>
+                                        {{-- <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p> --}}
+                                    </div>
+                                </div>
+                            </div>
+                        @endfor
+                        
+                    </div>
+                    <!-- Support Button-->
+                    <div class="support-button text-center d-flex align-items-center justify-content-center mt-4 wow fadeInUp" 
+                        data-wow-delay="0.5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                        <i class="lni-emoji-sad"></i>
+                        <p class="mb-0 px-2">¿No encuentra respuesta a su pregunta?</p>
+                        <a href="#contacto"> Contáctenos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')

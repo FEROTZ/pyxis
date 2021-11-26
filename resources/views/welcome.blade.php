@@ -1,6 +1,8 @@
 @extends('layouts.app')
+@section('title',$viewmeta->product_meta_title)
+@section('description',$viewmeta->product_meta_description)
+@section('keywords',$viewmeta->product_meta_keywords)
 @section('content')
-
     @include('cliente.includes.carrusel')
     <section class="bg-warning col-12" id="about">
         <div class="container">

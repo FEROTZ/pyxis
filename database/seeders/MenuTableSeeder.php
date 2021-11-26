@@ -16,9 +16,13 @@ class MenuTableSeeder extends Seeder
     public function run()
     {
         Menu::create([
-            'id' => 1,
-            'nombre' => 'Menu',
-            'slug' => '',
+            'id'               => 1,
+            'nombre'           => 'Menu',
+            'slug'             => '',
+            'status'           => 1,
+            'product_meta_title'      => 'Inicio',
+            'product_meta_description' => 'Descripción de prueba para la página welcome',
+            'product_meta_keywords'    => 'descripción, prueba, gepixys, welcome',
         ]);
     }
 }

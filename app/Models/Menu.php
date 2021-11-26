@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
+
     public function padre()
     {
         return $this->belongsTo(Menu::class);
@@ -28,6 +29,12 @@ class Menu extends Model
             return '/img/productos/'.$imagen2;
         }
     }
+    public function getImagenProductoLogoAttribute(){
+        $imagenLogo = $this->imagenLogo;
+        if ($imagenLogo){
+            return '/img/productos/'.$imagenLogo;
+        }
+    }
     public function imagenes(){
         return $this->hasMany(ProductoImagen::class);
     }
@@ -37,6 +44,30 @@ class Menu extends Model
             return 'Activo';
         }else{
             return 'Inactivo';
+        }
+    }
+
+    public function getMetaTitleStringAttribute(){
+        if ($this->product_meta_title) {
+            return $this->product_meta_title;
+        }else{
+            return 'Sin registros';
+        }
+    }
+
+    public function getMetaDescriptionStringAttribute(){
+        if ($this->product_meta_description) {
+            return $this->product_meta_description;
+        }else{
+            return 'Sin registros';
+        }
+    }
+    
+    public function getMetaKeywordsStringAttribute(){
+        if ($this->product_meta_keywords) {
+            return $this->product_meta_keywords;
+        }else{
+            return 'Sin registros';
         }
     }
 }
