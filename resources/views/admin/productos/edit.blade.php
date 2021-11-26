@@ -42,7 +42,9 @@
                     </small>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input name="imagen" type="file" class="custom-file-input" id="inputImagen">
+                            <input name="imagen" type="file"
+                                class="custom-file-input"
+                                id="inputImagen" accept="image/*">
                             <label class="custom-file-label" for="inputImagen">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -108,7 +110,9 @@
                     </small>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input name="imagen2" type="file" class="custom-file-input" id="inputImagen">
+                            <input name="imagen2" type="file"
+                                class="custom-file-input"
+                                id="inputImagen" accept="image/*">
                             <label class="custom-file-label" for="inputImagen">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -162,7 +166,9 @@
                     </small>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input name="imagenLogo" type="file" class="custom-file-input" id="inputImagen">
+                            <input name="imagenLogo" type="file"
+                                class="custom-file-input"
+                                id="inputImagen" accept="image/*">
                             <label class="custom-file-label" for="inputImagen">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -215,7 +221,9 @@
                         </small>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="imagenes[]" multiple type="file" class="custom-file-input" id="inputImagen">
+                                <input name="imagenes[]" multiple type="file"
+                                    class="custom-file-input"
+                                    id="inputImagen" accept="image/*">
                                 <label class="custom-file-label" for="inputImagen">Choose file</label>
                             </div>
                             <div class="input-group-append">
@@ -231,7 +239,9 @@
                     </small>
                     <div class="input-group">
                         <div class="custom-file">
-                            <input name="bienvenida" type="file" class="custom-file-input" id="inputImagen">
+                            <input name="bienvenida" type="file"
+                                class="custom-file-input"
+                                id="inputImagen" accept="image/*">
                             <label class="custom-file-label" for="inputImagen">Choose file</label>
                         </div>
                         <div class="input-group-append">
@@ -284,10 +294,10 @@
                 // div.setAttribute('class', 'form-inline');
                 div.innerHTML = '<div  class="pregunta_'+a+' "> '+
                                     '<label for="txtNombre">Pregunta</label>'+
-                                    '<input class="form-control" name="preguntas[]" type="text">{{old("preguntas[]")}}</input></div>'+
+                                    '<input class="form-control" name="preguntas[]" type="text" required>{{old("preguntas[]")}}</input></div>'+
                                 '<div class="respuesta_'+a+'">'+
                                     '<label for="txtNombre">Respuesta</label>'+
-                                    '<input class="form-control" name="respuestas[]" type="text">{{old("respuestas[]")}}</input>'+
+                                    '<input class="form-control" name="respuestas[]" type="text" required>{{old("respuestas[]")}}</input>'+
                                     '<button type="button" class="badge badge-pill badge-danger id="delete_pregunta()" onClick="deletePregunta('+a+')"">Eliminar</button>'+
                                 '</div>';
                 document.getElementById('Preguntas').appendChild(div);document.getElementById('Preguntas').appendChild(div);

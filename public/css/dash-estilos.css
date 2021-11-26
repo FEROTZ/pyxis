@@ -38,3 +38,7 @@ input.check{
   display: none;
   
 }
+
+label{
+  margin-bottom: 0.01rem;
+}

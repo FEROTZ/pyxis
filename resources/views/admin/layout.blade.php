@@ -108,6 +108,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{route("metadatos.show")}}" class="nav-link">
+                            <i class="fas fa-cogs"></i>
+                            <p>Metadatos de Servicios</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{route("mensajes.watch")}}" class="nav-link">
                             <i class="fas fa-envelope"></i>
                             <p>Mensajes</p>
@@ -365,60 +372,88 @@ scratch. This page gets rid of all links and provides the needed markup only.
 // Tabla de mensajes Recibidos
     $(function () {
 
-    $('#messages-table').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    }).buttons().container().appendTo('#messages-table_wrapper .col-md-6:eq(0)');
+        $('#messages-table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+        }).buttons().container().appendTo('#messages-table_wrapper .col-md-6:eq(0)');
 
-    $('.select2').select2();
+        $('.select2').select2();
 
-    $('.tags').select2({
-        tags:true,
-        maximumSelectionLength: 4
-    });
+        $('.tags').select2({
+            tags:true,
+            maximumSelectionLength: 4
+        });
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
-    })
-    /* jQueryKnob */
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+        /* jQueryKnob */
 
     })
 
 // Tabla de carrusel de imagenes
     $(function () {
 
-    $('#imagenes-table').DataTable({
-        "paging": true,
-        "lengthChange": true,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-    }).buttons().container().appendTo('#imagenes-table_wrapper .col-md-6:eq(0)');
+        $('#imagenes-table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+        }).buttons().container().appendTo('#imagenes-table_wrapper .col-md-6:eq(0)');
 
-    $('.select2').select2();
+        $('.select2').select2();
 
-    $('.tags').select2({
-        tags:true,
-        maximumSelectionLength: 4
-    });
+        $('.tags').select2({
+            tags:true,
+            maximumSelectionLength: 4
+        });
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-        theme: 'bootstrap4'
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+        /* jQueryKnob */
+
     })
-    /* jQueryKnob */
 
-    })
+// Tabla de manejo de metadatos
+    $(function () {
+
+$('#metadatos-table').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": true,
+    "responsive": true,
+}).buttons().container().appendTo('#imagenes-table_wrapper .col-md-6:eq(0)');
+
+$('.select2').select2();
+
+$('.tags').select2({
+    tags:true,
+    maximumSelectionLength: 4
+});
+
+//Initialize Select2 Elements
+$('.select2bs4').select2({
+    theme: 'bootstrap4'
+})
+/* jQueryKnob */
+
+})
 
 </script>
 @yield('scripts')

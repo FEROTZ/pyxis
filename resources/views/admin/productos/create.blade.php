@@ -108,7 +108,9 @@
                         </small>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="imagen2" type="file" class="custom-file-input" id="inputImagen">
+                                <input name="imagen2" type="file" 
+                                    class="custom-file-input" 
+                                    id="inputImagen" accept="image/*">
                                 <label class="custom-file-label" for="inputImagen">Choose file</label>
                             </div>
                             <div class="input-group-append">
@@ -142,7 +144,10 @@
                         </small>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="imagenLogo" type="file" class="custom-file-input" id="inputImagen">
+                                <input name="imagenLogo" 
+                                    class="custom-file-input" 
+                                    id="inputImagen" type="file"
+                                    accept="image/*">
                                 <label class="custom-file-label" for="inputImagen">Choose file</label>
                             </div>
                             <div class="input-group-append">
@@ -150,6 +155,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="txtLogoImg" aria-describedby="LogoImgHelp">Descripción de la Imagen Logo</label>
                         <small id="LogoImgHelp" class="form-text text-muted">
@@ -157,31 +163,35 @@
                         </small>
                         <input name="imagenLogoDesc" type="text" class="form-control"
                                 id="imagenLogoDesc" placeholder="Ingresa la descripción de la imagen logo">
-                                {{old("SegundaImgDesc")}}
+                                {{old("imagenLogoDesc")}}
                         </input>
                     </div>
-                    <div class="form-group">
-                        <label for="listStatus" aria-describedby="StatusHelper">Status</label>
-                        <small id="StatusHelper" class="form-text text-muted"> 
-                            Determina si el menú se muestra en la barra de navegación o no.
-                        </small>
-                        <select name="status" class="form-control selectpicker" id="listStatus" name="listStatus">
-                            {{old('status')}}
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="listClasificacion" aria-describedby="ClasificacionHelper">Clasificación</label>
-                        <small id="ClasificacionHelper" class="form-text text-muted">
-                            Determina si es es un submenú de una servicio existente.
-                        </small>
-                        <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
-                            {{-- <option value="">Menu</option> --}}
-                            @foreach($clasificaciones as $clasificacion)
-                                <option value="{{$clasificacion->id}}">{{$clasificacion->nombre}}</option>
-                            @endforeach
-                        </select>
+
+                    <div class="form-group form-row">
+                        <div class="col-md-6">
+                            <label for="listStatus" aria-describedby="StatusHelper">Status</label>
+                            <small id="StatusHelper" class="form-text text-muted"> 
+                                Determina si el menú se muestra en la barra de navegación o no.
+                            </small>
+                            <select name="status" class="form-control selectpicker" id="listStatus" name="listStatus">
+                                {{old('status')}}
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="listClasificacion" aria-describedby="ClasificacionHelper">Clasificación</label>
+                            <small id="ClasificacionHelper" class="form-text text-muted">
+                                Determina si es es un submenú de una servicio existente.
+                            </small>
+                            <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
+                                {{-- <option value="">Menu</option> --}}
+                                @foreach($clasificaciones as $clasificacion)
+                                    <option value="{{$clasificacion->id}}">{{$clasificacion->nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>                
                     <div class="form-group">
                         <label for="exampleInputFile" aria-describedby="CarruselImgsHelper">Imagenes del Carrusel</label>
@@ -190,7 +200,9 @@
                         </small>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="imagenes[]" multiple type="file" class="custom-file-input" id="inputImagen">
+                                <input name="imagenes[]" multiple type="file"
+                                    class="custom-file-input"
+                                    id="inputImagen" accept="image/*">
                                 <label class="custom-file-label" for="inputImagen">Choose file</label>
                             </div>
                             <div class="input-group-append">
@@ -205,19 +217,15 @@
                         </small>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input name="bienvenida" type="file" class="custom-file-input" id="inputImagen">
+                                <input name="bienvenida" type="file"
+                                    class="custom-file-input"
+                                    id="inputImagen" accept="image/*">
                                 <label class="custom-file-label" for="inputImagen">Choose file</label>
                             </div>
                             <div class="input-group-append">
                                 <span class="input-group-text">Upload</span>
                             </div>
                         </div>
-                        {{-- <div class="form-check text-center">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Activar imagen
-                            </label>
-                        </div> --}}
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -254,10 +262,10 @@
                 // div.setAttribute('class', 'form-inline');
                 div.innerHTML = '<div  class="pregunta_'+a+' "> '+
                                     '<label for="txtNombre">Pregunta</label>'+
-                                    '<input class="form-control" name="preguntas[]" type="text">{{old("preguntas[]")}}</input></div>'+
+                                    '<input class="form-control" name="preguntas[]" type="text" required>{{old("preguntas[]")}}</input></div>'+
                                 '<div class="respuesta_'+a+'">'+
                                     '<label for="txtNombre">Respuesta</label>'+
-                                    '<input class="form-control" name="respuestas[]" type="text">{{old("respuestas[]")}}</input>'+
+                                    '<input class="form-control" name="respuestas[]" type="text" required>{{old("respuestas[]")}}</input>'+
                                     '<button type="button" class="badge badge-pill badge-danger id="delete_pregunta()" onClick="deletePregunta('+a+')"">Eliminar</button>'+
                                 '</div>';
                 document.getElementById('Preguntas').appendChild(div);document.getElementById('Preguntas').appendChild(div);
@@ -284,34 +292,6 @@
         CKEDITOR.replace('cont_extra',{});
     </script>
 
-    
-
-    <script type="text/javascript">
-        function LimitAttach(tField,iType) {
-            file=tField.value;
-            if (iType==1) {
-                extArray = new Array(".jpeg", ".png", ".jpg", ".gif", ".svg", "webp", "jif");
-            }	
-            allowSubmit = false;
-            if (!file) return false;
-            while (file.indexOf("\\") != -1) file = file.slice(file.indexOf("\\") + 1);
-            ext = file.slice(file.indexOf(".")).toLowerCase();
-            for (var i = 0; i < extArray.length; i++) {
-                if (extArray[i] == ext) {
-                allowSubmit = true;
-                break;
-                }
-            }
-            if (allowSubmit) {
-                return true
-            } else {
-                tField.value="";
-                alert("Usted sólo puede subir archivos con extensiones " + (extArray.join(" ")) + "\n Reiniciando Formulario");
-                return false;
-                setTimeout("location.reload()",2000);
-            }
-        }	
-    </script>
     
         
 @endsection

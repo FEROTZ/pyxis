@@ -25,8 +25,10 @@ class WelcomeController extends Controller
         $imagenes    = ProductoImagen::where('destacado',true)->get();
         //Trae la información de contacto para gepyxis
         $informacion = Informacion::all();
-
-        return view('welcome')->with(compact("imagenes", "informacion"));
+        // return $menus;
+        $viewmeta = Menu::first();
+        // return $viewmeta;
+        return view('welcome')->with(compact("imagenes", "informacion","menus", "viewmeta"));
     }
 
     /**
@@ -62,20 +64,21 @@ class WelcomeController extends Controller
         $informacion = Informacion::all();
         $servicio = collect();
         $imagenesP = collect();
+        $viewmeta = collect();
         foreach ($productos as $elemento){
             if ($elemento->slug==$productoSlug){
                 $servicio=$elemento;
-            foreach ($elemento->imagenes as $imagen){
+                foreach ($elemento->imagenes as $imagen){
                     if ($imagen->destacado == false){
                         $imagenesP->push($imagen);
                     }
                 }
-
+                $viewmeta->put('product_meta_title', $elemento->product_meta_title);
+                $viewmeta->put('product_meta_description', $elemento->product_meta_description);
+                $viewmeta->put('product_meta_keywords', $elemento->product_meta_keywords);
             }
-
         }
-        // return $servicio;
-        return view("cliente.productos.show")->with(compact("servicio","imagenesP", "informacion"));
+        return view("cliente.productos.show")->with(compact("servicio","imagenesP", "informacion", "viewmeta"));
     }
 
     public function showSubcategoria($clasificacionSlug,$productoSlug,$categoriaSlug,$subcategoriaSlug)

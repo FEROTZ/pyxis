@@ -317,15 +317,34 @@ class ProductoController extends Controller
         return (redirect('admin/productos')->with(compact('guardado')));
     }
 
-
-
-
-
     //Eliminar el producto
     public function destroy($id)
     {
         $producto = Menu::find($id);
         $producto->imagenes()->delete();
         $producto->delete();
+    }
+
+    // Manejo de metadatos de cada producto
+    public function indexMeta(){
+        $productos = Menu::all();
+        return view("admin.metadatos.show")->with(compact("productos"));
+    }
+
+    public function editMeta($id){
+        $metadatos = Menu::find($id);
+        // return $metadatos;
+        return view("admin.metadatos.edit")->with(compact("metadatos"));
+    }
+
+    public function updateMeta(Request $request, $id){
+        $metadatos = Menu::find($id);
+        $metadatos->product_meta_title       = $request->meta_title;
+        $metadatos->product_meta_description = $request->meta_description;
+        $metadatos->product_meta_keywords    = $request->meta_keywords;
+        $metadatos->save();
+        // return $request;
+        $guardado = "El producto a sido modificado correctamente";
+        return (redirect('admin/metadatos')->with(compact('guardado')));
     }
 }

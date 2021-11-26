@@ -59,7 +59,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     //Carrusel de página de inicio
     Route::get('/carrusel-inicio', [App\Http\Controllers\Admin\CarruselInicio::class, "index"])->name('carrusel.show');
     Route::post('/actualizar-carrusel', [App\Http\Controllers\Admin\CarruselInicio::class, "update"])->name('carrusel.update');
-
+    //Manejo de metadatos
+    Route::get('/metadatos', [App\Http\Controllers\Admin\ProductoController::class, "indexMeta"])->name('metadatos.show');
+    Route::get('/editar-metadatos/{id}', [App\Http\Controllers\Admin\ProductoController::class, "editMeta"])->name('metadatos.edit');
+    Route::post('/actualizar-metadatos/{id}', [App\Http\Controllers\Admin\ProductoController::class, "updateMeta"])->name('metadatos.update');
 
 });
 

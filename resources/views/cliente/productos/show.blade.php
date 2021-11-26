@@ -1,4 +1,7 @@
 @extends("layouts.app")
+@section('title',$viewmeta->get('product_meta_title'))
+@section('description',$viewmeta->get('product_meta_description'))
+@section('keywords',$viewmeta->get('product_meta_keywords'))
 @section("content")
 <style media="screen">
     

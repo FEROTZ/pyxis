@@ -1,87 +1,16 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <!-- Metadata's -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Fernando cortés">
-    <meta name="copyright" content="Ricardo del Rosario" />
-    @if ()
-    @else
-        <meta name="description" content="Descripción de prueba para la página welcome">
-        <meta name="keywords" content="descripción, prueba, gepixys, welcome">
-    @endif
-    <meta http-equiv=”Content-Language” content=”es”/>
-    <meta name=”distribution” content=”global”/>
-    <meta name="Robots" content="all"/>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('lib/bootstrap/css/bootstrap.min.css') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-    <!-- Libraries CSS Files -->
-    <link rel="stylesheet" href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lib/ionicons/css/ionicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('lib/lightbox/css/lightbox.min.css') }}">
 
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <!-- Apple touch icon -->
-    <link rel="apple-touch-icon" href="{{ asset('') }}">
+@include('layouts.header')    
 
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <style>
-        @media (min-width: 992px){
-            .dropdown-menu .dropdown-toggle:after{
-                border-top: .3em solid transparent;
-                border-right: 0;
-                border-bottom: .3em solid transparent;
-                border-left: .3em solid;
-            }
-            .dropdown-menu .dropdown-menu{
-                margin-left:0; margin-right: 0;
-            }
-            .dropdown-menu li{
-                position: relative;
-            }
-            .nav-item .submenu{
-                display: none;
-                position: absolute;
-                left:100%; top:-7px;
-            }
-            .nav-item .submenu-left{
-                right:100%; left:auto;
-            }
-            .dropdown-menu > li:hover{ background-color: #f1f1f1 }
-            .dropdown-menu > li:hover > .submenu{
-                display: block;
-            }
-        }
-
-    </style>
-
-    @livewireStyles
-</head>
 <body style="overflow-x:hidden;">
-    {{-- Esta forma si sirve revisar si quitar forelse por foreach --}}
-@if(!empty($informacion))
-    @foreach($informacion as $data)
-        <a href="https://wa.me/{{$data->whatsapp}}" target="_blank" class="whats" data-toggle="tooltip"><img src="https://img.icons8.com/color/96/000000/whatsapp.png"/ alt="Whatsapp Logo"></a>
-    @endforeach
-@endif
+    
+    @if(!empty($informacion))
+        @foreach($informacion as $data)
+            <a href="https://wa.me/{{$data->whatsapp}}" target="_blank" class="whats" data-toggle="tooltip"><img src="https://img.icons8.com/color/96/000000/whatsapp.png"/ alt="Whatsapp Logo"></a>
+        @endforeach
+    @endif
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -149,11 +78,9 @@
         @yield('content')
     </main>
 </div>
-<!--==========================
-    Contacto Section
-    ============================-->
+    
     @livewire('contact')
-    <!-- #contact -->
+    
 
 <!-- footer -->
 <footer id="footer">

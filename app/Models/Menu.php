@@ -46,4 +46,28 @@ class Menu extends Model
             return 'Inactivo';
         }
     }
+
+    public function getMetaTitleStringAttribute(){
+        if ($this->product_meta_title) {
+            return $this->product_meta_title;
+        }else{
+            return 'Sin registros';
+        }
+    }
+
+    public function getMetaDescriptionStringAttribute(){
+        if ($this->product_meta_description) {
+            return $this->product_meta_description;
+        }else{
+            return 'Sin registros';
+        }
+    }
+    
+    public function getMetaKeywordsStringAttribute(){
+        if ($this->product_meta_keywords) {
+            return $this->product_meta_keywords;
+        }else{
+            return 'Sin registros';
+        }
+    }
 }
