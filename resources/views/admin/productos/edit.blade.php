@@ -187,7 +187,7 @@
                         placeholder="Ingresa la descripción de la imagen logo"/>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="listStatus" aria-describedby="StatusHelper">Status</label>
                     <small id="StatusHelper" class="form-text text-muted">
                         Determina si el menú se muestra en la barra de navegación o no.
@@ -201,8 +201,9 @@
                             <option selected value="0">Inactivo</option>
                         @endif
                     </select>
-                </div>
-                <div class="form-group">
+                </div> --}}
+
+                {{-- <div class="form-group">
                     <label for="listClasificacion" aria-describedby="ClasificacionHelper">Clasificación</label>
                     <small id="ClasificacionHelper" class="form-text text-muted">
                         Determina si es es un submenú de una servicio existente.
@@ -212,7 +213,39 @@
                         <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->padre_id?'selected':''}}>{{$clasificacion->nombre}}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
+
+                <div class="form-group form-row">
+                    <div class="col-md-6">
+                        <label for="listStatus" aria-describedby="StatusHelper">Status</label>
+                        <small id="StatusHelper" class="form-text text-muted"> 
+                            Determina si el menú se muestra en la barra de navegación o no.
+                        </small>
+                        <select name="status" class="form-control selectpicker" id="listStatus" name="listStatus">
+                            @if($producto->status==1)
+                                <option selected value="1">Activo</option>
+                                <option  value="0">Inactivo</option>
+                            @else
+                                <option value="1">Activo</option>
+                                <option selected value="0">Inactivo</option>
+                            @endif
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="listClasificacion" aria-describedby="ClasificacionHelper">Clasificación</label>
+                        <small id="ClasificacionHelper" class="form-text text-muted">
+                            Determina si es es un submenú de una servicio existente.
+                        </small>
+                        <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
+                            @foreach($clasificaciones as $clasificacion)
+                                @if($clasificacion->id != $producto->id)
+                                    <option value="{{$clasificacion->id}}" {{$clasificacion->id==$producto->padre_id?'selected':''}}>{{$clasificacion->nombre}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div> 
+
                 <div class="form-group">
                     <div class="form-group">
                         <label for="exampleInputFile" aria-describedby="CarruselImgsHelper">Imagenes del Carrusel</label>

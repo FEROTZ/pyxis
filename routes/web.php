@@ -36,9 +36,8 @@ Route::get('/login', function () {
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 
-
-
-
+//Rutas creadas para el Administrador
+//middleware -- tipo de filtro o regla (auth) indica para iniciar sesión
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/productos', [App\Http\Controllers\Admin\ProductoController::class, "index"])->name('productos.show');
     Route::get('/crear-productos', [App\Http\Controllers\Admin\ProductoController::class, "create"])->name('productos.create');
@@ -76,6 +75,9 @@ Route::get('/{clasificacion}/{producto}/{categoria}/{subcategoria}', [App\Http\C
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Rutas creadas para el Administrador
-//middleware -- tipo de filtro o regla (auth) indica para iniciar sesión
 
+
+// Ruta para el sitemap dinamico sitemap
+Route::get('sitemap.xml',[App\Http\Controllers\SitemapController::class, 'index']);
+Route::get('sitemap.xml/categoria',[App\Http\Controllers\SitemapController::class, 'categoria']);
+Route::get('sitemap.xml/subcategoria',[App\Http\Controllers\SitemapController::class, 'subcategoria']);
