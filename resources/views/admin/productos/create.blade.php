@@ -182,7 +182,7 @@
                         <div class="col-md-6">
                             <label for="listClasificacion" aria-describedby="ClasificacionHelper">Clasificación</label>
                             <small id="ClasificacionHelper" class="form-text text-muted">
-                                Determina si es es un submenú de una servicio existente.
+                                Determina si es es un submenú de un servicio existente.
                             </small>
                             <select name="clasificacion" class="form-control" data-live-search="true" id="listClasificacion" name="listClasificacion">
                                 {{-- <option value="">Menu</option> --}}
@@ -191,7 +191,6 @@
                                 @endforeach
                             </select>
                         </div>
-
                     </div>                
                     <div class="form-group">
                         <label for="exampleInputFile" aria-describedby="CarruselImgsHelper">Imagenes del Carrusel</label>
