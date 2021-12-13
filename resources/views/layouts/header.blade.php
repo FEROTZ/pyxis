@@ -14,12 +14,16 @@
         <meta name="keywords" content="@yield('keywords')">
         {{-- Fecha en la que se creo la pagina y fecha de ultima actualizacion --}}
         <meta name="content_origin"  content="2021-04-02">
-        <meta name="content_updated" content="2021-11-26">
+        <meta name="content_updated" content="@yield('content_updated')">
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}"/>
         <!-- Title -->
-        <title>Gepixys | @yield('title')</title>
-        
+        @hasSection('title')
+            <title>Gepixys | @yield('title')</title>
+        @endif
+        @sectionMissing('title')
+            <title>Gepixys</title>
+        @endif
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <!-- Fonts -->

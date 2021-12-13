@@ -2,15 +2,14 @@
 @section('title',$viewmeta->product_meta_title)
 @section('description',$viewmeta->product_meta_description)
 @section('keywords',$viewmeta->product_meta_keywords)
+@section('content_updated', $viewmeta->updated_at)
 @section('content')
     @include('cliente.includes.carrusel')
     <section class="bg-warning col-12" id="about">
         <div class="container">
-
             <header class="section-header">
                 <h3>¿Quienes Somos?</h3>
             </header>
-
             <section class="alazea-portfolio-area portfolio-page section-padding-0-100 bg-gray" >
                 <div class="container">
                     <div class="row">
@@ -33,7 +32,7 @@
                         <!-- Single Portfolio Area -->
                         <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item2 design home-design">
                             <div class="portfolio-thumbnail2 bg-img"
-                                 style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
+                            style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
                                 <div>
                                     <a>
                                         <div class="port-hover-text" style="text-align:center;">
@@ -47,7 +46,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item2 design home-design">
                             <div class="portfolio-thumbnail2 bg-img"
-                                 style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
+                            style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
                                 <div>
                                     <a>
                                         <div class="port-hover-text" style="text-align:center;">
@@ -62,7 +61,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item2 design home-design">
                             <div class="portfolio-thumbnail2 bg-img"
-                                 style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
+                            style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset;">
                                 <div>
                                     <a>
                                         <div class="port-hover-text" style="text-align:center;">
@@ -77,7 +76,7 @@
                         </div>
                         <div class="col-12 col-sm-6 col-lg-3 single_portfolio_item2 design home-design">
                             <div class="portfolio-thumbnail2 bg-img"
-                                 style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset; ">
+                            style="background-image: url('img/principales/fondo2.jpg');opacity: 0.9; filter: alpha(opacity=30); border-style: inset; ">
                                 <div>
                                     <a>
                                         <div class="port-hover-text" style="text-align:center;">
@@ -94,7 +93,6 @@
             </section>
         </div>
     </section>
-
     <section id="about">
         <div class="container">
             <header class="section-header wow fadeInUp">
@@ -118,13 +116,11 @@
             </div>
         </div>
     </section>
-
     <!--==========================
       Clientes Section
     ============================-->
     <section id="clientes" class="wow fadeInUp">
         <div class="container">
-
             <header class="section-header">
                 <h3>Clientes</h3>
                 <h2 style="font-size: 15px; text-align: center;" >Todas las imágenes y logotipos son propiedad de sus respectivos autores.</h2>
@@ -154,22 +150,17 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-
         </div>
     </section><!-- #clientes -->
-
-
     <!--==========================
       Socios Section
     ============================-->
     <section id="socios" class="wow fadeInUp">
         <div class="container">
-
             <header class="section-header">
                 <h3>SOCIOS ESTRATEGICOS</h3>
                 <h2 style="font-size: 15px; text-align: center;" >Todas las imágenes y logotipos son propiedad de sus respectivos autores.</h2>
             </header>
-
             <!-- Swiper -->
             <div class="swiper-container secundary">
                 <div class="swiper-wrapper">
@@ -200,21 +191,10 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-
         </div>
     </section><!-- #socios -->
-
-
-    <!--==========================
-    Contacto Section
-    ============================-->
-    {{-- @livewire('contact') --}}
-    <!-- #contact -->
-
-
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper('.secundary', {
@@ -233,8 +213,4 @@
             },
         });
     </script>
-
-
-
-
 @endsection

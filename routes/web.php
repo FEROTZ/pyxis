@@ -79,5 +79,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // Ruta para el sitemap dinamico sitemap
 Route::get('sitemap.xml',[App\Http\Controllers\SitemapController::class, 'index']);
-Route::get('sitemap.xml/categoria',[App\Http\Controllers\SitemapController::class, 'categoria']);
-Route::get('sitemap.xml/subcategoria',[App\Http\Controllers\SitemapController::class, 'subcategoria']);
+Route::get('bsitemap',[App\Http\Controllers\SitemapController::class, 'indexText']);
+// Route::get('sitemap.xml/categoria',[App\Http\Controllers\SitemapController::class, 'categoria']);
+// Route::get('sitemap.xml/subcategoria',[App\Http\Controllers\SitemapController::class, 'subcategoria']);

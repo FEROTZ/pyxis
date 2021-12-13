@@ -11,7 +11,7 @@
         <div id="loader"></div>
         <div style="display:none;" id="myDiv" class="card card-primary col-12 p-0">
             <div class="card-header">
-                <h3 class="card-title">Nuevo Servicio</h3>
+                <h3 class="card-title">Agregar/Editar Metadatos</h3>
             </div>
             <!-- form start -->
             <form action="{{url("/admin/actualizar-metadatos/".$metadatos->id)}}" method="post" enctype="multipart/form-data">

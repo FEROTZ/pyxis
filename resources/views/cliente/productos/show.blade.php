@@ -2,12 +2,9 @@
 @section('title',$viewmeta->get('product_meta_title'))
 @section('description',$viewmeta->get('product_meta_description'))
 @section('keywords',$viewmeta->get('product_meta_keywords'))
+@section('content_updated', $viewmeta->get('updated_at'))
 @section("content")
-<style media="screen">
-    
 
-
-</style>
     <div class="swiper-container principal">
         <div class="swiper-wrapper">
             @foreach($imagenesP as $imagen)

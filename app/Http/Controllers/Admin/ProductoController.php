@@ -32,12 +32,12 @@ class ProductoController extends Controller
         
         $validated=$request->validate([
             'nombre'          => 'nullable|unique:menus|max:40',
-            'introduccion'    => 'nullable|max:1000',
+            'introduccion'    => 'nullable|max:10000',
             'imagen'          => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
             'imagenDesc'      => 'nullable',
-            'descripcion'     => 'nullable|max:1000',
-            'contenido'       => 'nullable|max:1000',
-            'diferenciadores' => 'nullable|max:1000',
+            'descripcion'     => 'nullable|max:10000',
+            'contenido'       => 'nullable|max:10000',
+            'diferenciadores' => 'nullable|max:10000',
             'imagen2'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
             'imagen2Desc'     => 'nullable',
             'preguntas'       => 'nullable',
@@ -45,8 +45,8 @@ class ProductoController extends Controller
             'imagenLogo'      => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp,jfif|max:2048',
             'imagenLogoDesc'  => 'nullable',
             'status'          => 'nullable',
-            'carac_adi'       => 'nullable|max:1000',
-            'info_adi'        => 'nullable|max:1000',
+            'carac_adi'       => 'nullable|max:10000',
+            'info_adi'        => 'nullable|max:10000',
         ]);
 
 

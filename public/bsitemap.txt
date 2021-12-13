@@ -1,0 +1,6 @@
+http://localhost:8000/soluciones/erp
+http://localhost:8000/erp/modulos-incluidos
+http://localhost:8000/erp/ventas
+http://localhost:8000/erp/modulos-opcionales
+http://localhost:8000/erp/produccion
+http://localhost:8000

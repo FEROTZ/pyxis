@@ -25,7 +25,6 @@ class WelcomeController extends Controller
         $imagenes    = ProductoImagen::where('destacado',true)->get();
         //Trae la información de contacto para gepyxis
         $informacion = Informacion::all();
-        // return $menus;
         $viewmeta = Menu::first();
         // return $viewmeta;
         return view('welcome')->with(compact("imagenes", "informacion","menus", "viewmeta"));
@@ -76,6 +75,7 @@ class WelcomeController extends Controller
                 $viewmeta->put('product_meta_title', $elemento->product_meta_title);
                 $viewmeta->put('product_meta_description', $elemento->product_meta_description);
                 $viewmeta->put('product_meta_keywords', $elemento->product_meta_keywords);
+                $viewmeta->put('updated_at', $elemento->updated_at);
             }
         }
         return view("cliente.productos.show")->with(compact("servicio","imagenesP", "informacion", "viewmeta"));
